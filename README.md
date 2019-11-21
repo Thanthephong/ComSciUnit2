@@ -201,7 +201,7 @@ This is the actual system using the arduino set:
  The reason we should assign the variables is to increase the efficiency for the computer's RAM. Because for example, if we want a variable that can store only 1 or 0 to display binary, there is no need to use float or word for it, we can just use boolean, which is more efficient for the computer.
  
  ### 5. Binary gates
- 
+  Binary gates is a quite complicated topic. It is basically an idealized or physical device implementing a Boolean function; that is, it performs a logical operation on one or more binary inputs and produces a single binary output
  
 
  
