@@ -139,6 +139,11 @@ After getting familiar with how arduino programming and boarding works, we moved
  
  ![DecimalToBinary](DecimalToBinary.png)
  
+ **This the arduino program that gives output from 0 to 15 in binary**
+ 
+ 
+ 
+ 
 
 
   
