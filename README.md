@@ -125,7 +125,9 @@ A very interesting and super useful function is the void loop() function. With t
 ### 3. Binary counting 
 
 After getting familiar with how arduino programming and boarding works, we moved on to some harder tasks: Binary counting using Arduino language. But before that, we learned out to change from decimal to binary. 
+
 **Mathematically, how we convert from decimal to binary is:**
+
 - Write down the decimal number.
 - Divide the number by 2.
 - Write the result underneath.
