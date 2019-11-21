@@ -23,6 +23,7 @@ This is a very new topic for us. Working with binary and morse code, using a dif
 
 Design
 ---------
+There is not much for designing in this topic, as we already got use to the loops and also we don't really use them that much in the chapter, so no flow chart 
 
 
 Development
@@ -201,11 +202,64 @@ This is the actual system using the arduino set:
  The reason we should assign the variables is to increase the efficiency for the computer's RAM. Because for example, if we want a variable that can store only 1 or 0 to display binary, there is no need to use float or word for it, we can just use boolean, which is more efficient for the computer.
  
  ### 5. Binary gates
-  Binary gates is a quite complicated topic. It is basically an idealized or physical device implementing a Boolean function; that is, it performs a logical operation on one or more binary inputs and produces a single binary output
- 
+  Binary gates is a quite complicated topic. It is basically an idealized or physical device implementing a Boolean function; that is, it performs a logical operation on one or more binary inputs and produces a single binary output. These mostly all the commands and equation of logic gates: 
+
+![logic-gates](logic-gates.png)
+
+This is the example for the output that each of the gates give
+
+![2-Figure1-1](2-Figure1-1.png)
+
+This is very helpful because for instance we work with a list of inputs 2 buttons or more, instead of having to use several lines of IF commands, we can summarize it on 1 line using only one equaion. It is very hard to fully understand and get use to doing it, it involves:
+* Putting the input and output into a specific type of table
+* Work out the equation for individual terms
+* Putting those terms together to create the complete equation
+* Transform the equation from math language into programming language
+
+For example, I used one coding exercise and try to use it 2 ways: manually and uing binary gates, the question is to create the output with the following inputs:
+![Homework](Homework.png)
+
+**The normal way of doing it:**
+````.c
+int decimal;
+void loop()
+{
+ decimal = digitalRead(butA)*pow(2,1);
+ decimal += digitalRead(butB)*pow(2,0);
+  
+ if (decimal == 0) {
+    digitalWrite(led1, HIGH);
+   	digitalWrite(led2, LOW);
+  }
+  if (decimal == 1 || decimal == 2) {
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, HIGH);
+  }
+  if (decimal == 3) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+  }
+  
+}
+````
+What I did here was at first I convert the binary into decimal so that it is easier to work with, and then from then use if as a condition to get specific outcomes.
+
+**Using binary gates:**
+````.c
+void loop()
+{
+	bool A = digitalRead(butA);
+  	bool B = digitalRead(butB);
+  	bool eq1 = (!A & !B) | (A & B);
+  	bool eq2 = B | A;
+  	digitalWrite(led1, eq1);
+  	digitalWrite(led2, eq2);
+}
+````
+As you can see, it is a lot shorter. It can actually be written in 2 lines of code only, but because I want to keep it organized, I assigned name for each value and equation so it is easier to understand. The symbols "!", "&","|"... are the logic gates, it represents NOT, AND, OR,... So basically, it works the same as all the if commands but put into a very simplified line, thats what makes binary gates so convenient.
 
  
- 
+
  
  
 
