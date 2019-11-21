@@ -137,7 +137,7 @@ After getting familiar with how arduino programming and boarding works, we moved
 - The most significant bit (MSB) is at the bottom of the column of remainders and the least significant bit (LSB) is at the top.
 - Read the series of 1s and 0s on the right from the bottom up. This is the binary equivalent of the decimal number. Here is an outline flow chart for a program to do it:
  
- ![DecimalToBinary](DecimalToBinary.png)
+ ![FlowChart](FlowChart.png)
  
  **This the arduino program that gives output from 0 to 15 in binary**
  
