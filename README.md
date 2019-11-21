@@ -181,6 +181,27 @@ void loop()
 ````
 This program gives the output of the first 16 decimals in binary. To understand how this works, first we should look at the decimal to binary table:
 ![Table](Table.png)
+
+We can actually see a pattern from the binary side of the table:
+- 4th column: 0 and 1 switches every time ( 0 1 0 1 )
+- 3rd column: 0 and 1 switches every 2 times ( 0 0 1 1 0 0 )
+- 2nd column: 0 and 1 switches every 4 times ( 0 0 0 0 1 1 1 1 )
+- 1st column: 0 and 1 switches every 8 times ( 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 )
+
+From that, we can easily write the code as we have found the pattern between those binary numbers, just like the code above.
+This is the actual system using the arduino set:
+
+![DecimalToBinary](DecimalToBinary.gif)
+
+### 4. Different types of variables in Arduino
+ In Arduino, there are various types of variables that can store different valus. That is why we have to define that variable type before start working with it, unlike bash. 
+ 
+ ![ArduinoVariables]( ArduinoVariables.jpg)
+ 
+ The reason we should assign the variables is to increase the efficiency for the computer's RAM. Because for example, if we want a variable that can store only 1 or 0 to display binary, there is no need to use float or word for it, we can just use boolean, which is more efficient for the computer.
+ 
+ ### 5. Binary gates
+ 
  
 
  
