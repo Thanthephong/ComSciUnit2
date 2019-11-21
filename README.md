@@ -124,7 +124,19 @@ A very interesting and super useful function is the void loop() function. With t
 
 ### 3. Binary counting 
 
-After getting familiar with how arduino programming and boarding works, we moved on to some harder tasks: Binary counting using Arduino language. But before that, we learned out to change from decimal to binary 
+After getting familiar with how arduino programming and boarding works, we moved on to some harder tasks: Binary counting using Arduino language. But before that, we learned out to change from decimal to binary. 
+**Mathematically, how we convert from decimal to binary is:**
+- Write down the decimal number.
+- Divide the number by 2.
+- Write the result underneath.
+- Write the remainder on the right hand side. This will be 0 or 1.
+- Divide the result of the division by 2 and again write down the remainder.
+- Continue dividing and writing down remainders until the result of the division is 0.
+- The most significant bit (MSB) is at the bottom of the column of remainders and the least significant bit (LSB) is at the top.
+- Read the series of 1s and 0s on the right from the bottom up. This is the binary equivalent of the decimal number. Here is an outline flow chart for a program to do it:
+ 
+ ![DecimalToBinary](DecimalToBinary.png)
+ 
 
 
   
