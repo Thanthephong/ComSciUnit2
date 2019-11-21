@@ -140,6 +140,49 @@ After getting familiar with how arduino programming and boarding works, we moved
  ![FlowChart](FlowChart.png)
  
  **This the arduino program that gives output from 0 to 15 in binary**
+  
+ ![Arduinodecimaltobinary](Arduinodecimaltobinary.png)
+ 
+ ````.c
+ int i=0;
+void setup()
+{
+  pinMode(9, OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+  for (i=0; i<=15; i++) {
+    if ( i % 2 > 0 ) {
+      digitalWrite(9,HIGH);
+    }
+    if ( i % 4 > 1 ) {
+       digitalWrite(10,HIGH);
+    }
+    if ( i % 8 > 3 ) {
+       digitalWrite(11,HIGH);
+    }
+    if ( i % 16 > 7 ) {
+      digitalWrite(12,HIGH);
+    }
+    delay(1000);
+     digitalWrite(9,LOW);
+     digitalWrite(10,LOW);
+     digitalWrite(11,LOW);
+     digitalWrite(12,LOW);
+    delay(200);
+        
+  }
+    
+}
+
+void loop()
+{
+}
+````
+This program gives the output of the first 16 decimals in binary. To understand how this works, first we should look at the decimal to binary table:
+![Table](Table.png)
+ 
+
  
  
  
