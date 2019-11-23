@@ -268,6 +268,9 @@ We are currently working on how to show a number by pressing buttons. Like the n
 
 ![UntidyTerrificKarakul-small](UntidyTerrificKarakul-small.gif)
 
+We have made an input and output table for the inputs and outputs. Basically, the buttons will display number from 1 to 7. This is the table:
+
+
 
  
 
