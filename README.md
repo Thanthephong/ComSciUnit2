@@ -29,6 +29,14 @@ There is not much for designing in this topic, as we already got use to the loop
 As you can see, we can add the arduino board, add different parts and engines to it. Not only that, we can also code and basically set up for the whole system before actually using the physical arduino set. The purpose of this is to see if the program is working correctly, if it needs fixing. Before building on the school's arduino set, we always use tinkercad as it is a lot easier to debugg programs, to check if we plugged in something wrong right. For example: if we forget to plug the resistors for the LED lights, the light will burn; but on tinkercad, it reminds you that you should plug it in, which is very helpful. Usually, after getting everything set up, and run several tests that shows expected results, I start working on the 
 arduino set, and it is even easier because we can refer to the tinkercad circuit and do everything the same. In the end, it is a very useful and convenient program.
 
+**Usability and HCD***
+Usability is according to Techopedia [1] the degree of ease with which a product can be used to achieve their goals. Elegance, clarity, intuitive.
+
+Human-centered design [also Human-centred design, as used in ISO standards] is an approach to problem solving, commonly used in design and management frameworks that develops solutions to problems by involving the human perspective in all steps of the problem-solving process [2]
+
+[1] “Usability retrieved from https://www.techopedia.com/definition/4919/usability ( 25 Nov 2019 )
+[2] POSMER J, MARS R. “ It’s not you, bad doors are everywhere” 2016. Retrieved ( 25 Nov 2019 )
+
 
 
 Development
