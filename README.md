@@ -280,6 +280,10 @@ We have made an input and output table for the inputs and outputs. Basically, th
 
 
 
+### 7. Designing input system for 2 buttons
+
+
+
  
 
  
