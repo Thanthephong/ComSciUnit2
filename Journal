@@ -18,3 +18,24 @@ Types of variables in arduino?
 - Double
 - String
 
+In the next lesson, after having a test on the variables, we get to start working with buttons and LED lights. At first, I got
+quite confused about how to work with the breadboard: where to plug the wires, which wires goes where, where to put the buttons, 
+which end is positive, which end is negative. But after doing it multiple times and getting it sorted out, I realized that it 
+is actually very easy to know where to connect the wires once you understand how the breadboard works. After that we learned how to use
+the serial monitor to check the output of the program.
+
+The serial monitor is very helpful when we want to know what the output will be, and therefore it is very good for debugging problems.
+We learnt how to read a button input and from that turn the led lights on and off. We always use Tinkercad - a arduino online
+simulator before actually putting the parts together to see if the program is working correctly and there are no errors. The
+only disadvantage that we found on tinkercad so far is that we cannot press/hold 2 buttons at the same time, because there is
+only 1 cursor. So we have to use the actual physical arduino board in order to test with the cases that involves 2 buttons
+being pressed at the same time
+
+We learned about a completely new thing to me today, it is logic gates. At first, me and the rest of the class finds this very 
+confusing, probably the most confusing thing for me since the beginning of the year fot this subject. It is very helpful for
+working with inputs and outputs when it comes to binary numbers. We did plenty of exercise: drawing graphs, making truth 
+tables, applying it to arduino program. Comparing to not using logic gates method, a particular program will contains 
+about 35 lines. But when we use logic gates for the same program, we only need about 5 lines to complete it, it is a 
+significant difference.
+
+
