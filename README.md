@@ -282,6 +282,11 @@ We have made an input and output table for the inputs and outputs. Basically, th
 
 ### 7. Designing input system for 2 buttons
 
+Basically, what we have to do here is to design an input system, that let user choose from the alphabet, and including the numbers from 0 to 9, with only 2 buttons. 
+
+**Step 1: Finding the way the system works that has the most efficiency**
+This for me seems to be the hardest step of the program: how to find the right system. Of course, we have only 2 buttons, but we can decide how the program works and what the buttons will choose. There are many different approaches to the system, and finding the most efficient one is not easy at all.
+
 
 
  
