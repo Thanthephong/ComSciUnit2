@@ -277,13 +277,74 @@ We are currently working on how to show a number by pressing buttons. Like the n
 ![UntidyTerrificKarakul-small](UntidyTerrificKarakul-small.gif)
 
 We have made an input and output table for the inputs and outputs. Basically, the buttons will display number from 1 to 7. This is the table:
+![InputOutputTable](InputOutputTable.jpg)
+After coming up with this input and output, we have to use what we learned about binary gates to create a bitwise equation for each of the LED lights. To know the equations for a binary input and output system, first we create a table ( I take light b as an example). And then come up with the equation using our binary gates knowledge:
+![BinaryGates123](BinaryGates123.jpg)
+
+After completing all the equation for the LED lights, we made a ciruit on tinkercad again to check if it is working normally. This takes a huge amount of time as we have to connect all the wires and setting up for 7 different lights.
+![Homeewoew](Homeewoew.png)
+
+````.c
+int butA = 13;
+int butB = 12;
+int butC = 11;
+int ledA = 7;
+int ledB = 6;
+int ledC = 5;
+int ledD = 4;
+int ledE = 3;
+int ledF = 2;
+int ledG = 1;
+
+void setup()
+{
+  pinMode(butA, INPUT);
+  pinMode(butB, INPUT);
+  pinMode(butC, INPUT);
+  pinMode(ledA, OUTPUT);
+  pinMode(ledB, OUTPUT);
+  pinMode(ledC, OUTPUT);
+  pinMode(ledD, OUTPUT);
+  pinMode(ledE, OUTPUT);
+  pinMode(ledF, OUTPUT);
+  pinMode(ledG, OUTPUT);
+}
+
+void loop()
+{
+  bool A = digitalRead(butA);
+  bool B = digitalRead(butB);
+  bool C = digitalRead(butC);
+
+  bool eqA = ( (!C) & (!A) ) | B | ( C & A );
+  bool eqB =  ( A & C ) | ( (!B) & (!C) );
+  bool eqC = ( (!C) & (!A) ) | ((!C) & B);
+  bool eqD = (!C & !A) | (!A & B | (!C & B | (A & !B & C);
+  bool eqE = C | (!A & !B) | A;
+  bool eqF = !B | ( !A & !C ) | ( A & C);
+  bool eqG = B | (A & !B);
+ 
+  digitalWrite(ledA, eqA);
+  digitalWrite(ledB, eqB);
+  digitalWrite(ledC, eqC);
+  digitalWrite(ledD, eqD);
+  digitalWrite(ledE, eqE);
+  digitalWrite(ledF, eqF);
+  digitalWrite(ledG, eqG);
+}
+````
+The thing that takes us the most time is how to use the binary equations and bitwise symbols in arduino, but we managed to figure it out in the end. As the program were tested and worked perfectly as we expected to, based on this circuit, we this up using an actual arduino set.
+![7ledlights](7ledlights.jpg)
+
+It took us a lot of time to get all the wires connected, plugged in to the led lights, inserted in the right place. There were problems such as: not enough male to female cables in arduino box, plugs were loose, wrong resistors,... But in the end we managed to sort things out, and it works perfectly.
+
+
+
+
 
 
 
 ### 7. Designing input system for 2 buttons
-
-Basically, what we have to do here is to design an input system, that let user choose from the alphabet, and including the numbers from 0 to 9, with only 2 buttons. Basically, we do this by first creating an input and output table:
-![InputOutputTable](InputOutputTable.jpg)
 
 **Step 1: Finding the way the system works that has the most efficiency**
 This for me seems to be the hardest step of the program: how to find the right system. Of course, we have only 2 buttons, but we can decide how the program works and what the buttons will choose. There are many different approaches to the system, and finding the most efficient one is not easy at all.
