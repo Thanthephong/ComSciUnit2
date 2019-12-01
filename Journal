@@ -38,4 +38,22 @@ tables, applying it to arduino program. Comparing to not using logic gates metho
 about 35 lines. But when we use logic gates for the same program, we only need about 5 lines to complete it, it is a 
 significant difference.
 
+After a few lessons of learning about logic gates, how to draw diagrams, truth tables, coming up with equations, I finally got
+very familiar with it. And we started to program an input system that can display numbers from 0 to 7 using 7 led lights and 
+3 buttons. The planning progress was very long as we have to come up with an input output table, coming up with equations for
+EACH of the lights. Me, Arata and Filip were in the same group. And as Filip works with the wires and cabling, me and Arata 
+start to come up with equations. The main problem was that as we were working on 3 different computers, we don't know if the 
+code we were writing actually matches with the others. So in the end, when we put the code together, we realized that many parts
+of the code were wrong. Then we figured out the problem quite easily, it is how we typed the binary equations on arduino was 
+wrong, although we had the equations ready and right. After fixing it, the program works perfectly and we are now ready to 
+set up using the actual arduino set.
+
+Because of family business, Arata was away for this class. So it is only me and Filip working on getting the wires and cables 
+together. We don't need much brain power for this one, just connecting the cables for the lights. But as there are 7 lights and
+2 buttons to work with, this progress is actually not much easy. It took us very long to get the cables to connect accurately, 
+but although we had our tinker cad program ready on our laptop, it is still very hard for us to see because we were using the 
+small breadboard instead of the very big one. In the end of the class, finally, we got it done with and functioning just as we 
+expected it to. We were very proud of ourselves to finish building this with a limited amount of time. But then for the other 
+groups, people to work on it, we have to unplug all of the cables and return it into the set, and that also took so much time.
+
 
