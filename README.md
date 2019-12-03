@@ -253,7 +253,7 @@ This is the actual system using the arduino set:
 
 This is the example for the output that each of the gates give
 
-![2-Figure1-1](2-Figure1-1.png)
+![BinaryLogicGates](BinaryLogicGates.png)
 
 This is very helpful because for instance we work with a list of inputs 2 buttons or more, instead of having to use several lines of IF commands, we can summarize it on 1 line using only one equaion. It is very hard to fully understand and get use to doing it, it involves:
 * Putting the input and output into a specific type of table
