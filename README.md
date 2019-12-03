@@ -32,13 +32,21 @@ As I am an HL student, we have to do harder tasks. So I decided to join the mars
 **Success criteria:**
 
 The expected outcome of the whole project is to achieve:
+	
 	1. Communicate with English and binary between Earth and Mars station
+	
 	2. Communicate with binary, English and morse between Mars and Moon
+	
 	3. Communicate with morse and English at Moon station
+	
 	4. Providing an English input system that uses only 2 push buttons
+	
 	5. Sending messages using only 100W lights and buzzers
+	
 	6. System is overall easy to understand for the user to use
+	
 	7. Processing and sending messages should be in miliseconds after the user entered the input
+	
 
 
 Design
@@ -316,30 +324,6 @@ After completing all the equation for the LED lights, we made a ciruit on tinker
 ![Homeewoew](Homeewoew.png)
 
 ````.c
-int butA = 13;
-int butB = 12;
-int butC = 11;
-int ledA = 7;
-int ledB = 6;
-int ledC = 5;
-int ledD = 4;
-int ledE = 3;
-int ledF = 2;
-int ledG = 1;
-
-void setup()
-{
-  pinMode(butA, INPUT);
-  pinMode(butB, INPUT);
-  pinMode(butC, INPUT);
-  pinMode(ledA, OUTPUT);
-  pinMode(ledB, OUTPUT);
-  pinMode(ledC, OUTPUT);
-  pinMode(ledD, OUTPUT);
-  pinMode(ledE, OUTPUT);
-  pinMode(ledF, OUTPUT);
-  pinMode(ledG, OUTPUT);
-}
 
 void loop()
 {
