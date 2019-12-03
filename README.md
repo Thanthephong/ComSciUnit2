@@ -1,6 +1,6 @@
 # ComSciUnit2
 
-Binomial and morse
+Martian Decoder
 ===================
 
 
@@ -16,9 +16,29 @@ Contents
  
 Planning
 ----------
+**Identifying problem:**
 The topic is called Martian Decoder. The year is 2050. Planet exploration is a thing, however, communication is still precarious. The station in the Earth can only communicate using Morse code, the station in the Moon can only communicate in Binary code. Communication with the station in Mars must be provided. Basically what we have to do is work with binary and morse programming: provide a communication system that allow stations to communicate seamlessly using English, but the Keyboard input on each station is limited to 2 push buttons.
 
+**Solution proposed:**
 This is a very new topic for us. Working with binary and morse code, using a different programming language, and working the with arduino set. At first, we were quite anxious but also very excited about getting to build and program a system. And the first thing I did was to get to know how to build the system, get familiar with arduino programming language, and also how too assemble, connect the lights, buttons, resistors to the arduino Uno3 board.
+
+We are seperated into three different stations: earth, mars and moon. What we have to achieve is:
+- The user enter the input using english alphabet
+- The input is transfered into binary code and sent to the mars
+- The mars then trasnfer it back to english and again change the language into morse code, and send the code to the moon station
+- Moon station will recieve that morse code and change it back to english
+As I am an HL student, we have to do harder tasks. So I decided to join the mars station with Filip, Lingye and Shin. Mars is the hardest station comparing with the two other stations because we have to work all of the  3 different types of language: binary, morse and english. 
+
+**Success criteria:**
+
+The expected outcome of the whole project is to achieve:
+	1. Communicate with English and binary between Earth and Mars station
+	2. Communicate with binary, English and morse between Mars and Moon
+	3. Communicate with morse and English at Moon station
+	4. Providing an English input system that uses only 2 push buttons
+	5. Sending messages using only 100W lights and buzzers
+	6. System is overall easy to understand for the user to use
+	7. Processing and sending messages should be in miliseconds after the user entered the input
 
 
 Design
@@ -30,8 +50,8 @@ As you can see, we can add the arduino board, add different parts and engines to
 arduino set, and it is even easier because we can refer to the tinkercad circuit and do everything the same. In the end, it is a very useful and convenient program.
 
 **Usability and HCD***
-Usability is according to Techopedia [1] the degree of ease with which a product can be used to achieve their goals. Elegance, clarity, intuitive.
-
+Usability is according to Techopedia [1] the degree of ease with which a product can be used to achieve their goals. Elegance, clarity, intuitive. Usability assesses the level of difficulty involved in using a user interface
+ 
 Human-centered design [also Human-centred design, as used in ISO standards] is an approach to problem solving, commonly used in design and management frameworks that develops solutions to problems by involving the human perspective in all steps of the problem-solving process [2]
 
 [1] “Usability retrieved from https://www.techopedia.com/definition/4919/usability ( 25 Nov 2019 )
@@ -230,6 +250,7 @@ This is very helpful because for instance we work with a list of inputs 2 button
 * Transform the equation from math language into programming language
 
 For example, I used one coding exercise and try to use it 2 ways: manually and uing binary gates, the question is to create the output with the following inputs:
+
 ![Homework](Homework.png)
 
 **The normal way of doing it:**
@@ -255,7 +276,10 @@ void loop()
   
 }
 ````
-What I did here was at first I convert the binary into decimal so that it is easier to work with, and then from then use if as a condition to get specific outcomes.
+What I did here was at first I convert the binary into decimal so that it is easier to work with, and then from then use if as a condition to get specific outcomes. Similar to this exercise, we also did another 2 tables: one is similar to the first one, and one with 3 inputs instead of 2 inputs.
+
+Table 2:
+
 
 **Using binary gates:**
 ````.c
@@ -337,8 +361,6 @@ The thing that takes us the most time is how to use the binary equations and bit
 ![7ledlights](7ledlights.jpg)
 
 It took us a lot of time to get all the wires connected, plugged in to the led lights, inserted in the right place. There were problems such as: not enough male to female cables in arduino box, plugs were loose, wrong resistors,... But in the end we managed to sort things out, and it works perfectly.
-
-
 
 
 
