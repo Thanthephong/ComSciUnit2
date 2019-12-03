@@ -104,6 +104,8 @@ void loop() {
 ````
   We program and set up mostly everything on Tinkercad.com first before actually using the arduino set to make it. Tinkercad is an online arduino simulation, both setting up the board and coding. This helps us to make sure everything is working perfectly, and also debugging problems if needed. And then when we are done with tinker cad, we use the school's arduino set to set up the actual traffic light ( as we know that it is working normally on tinker cad, we will know that if we do the same thing with the set it should be working normally ). 
   
+  In the beginning of the program, we have to define the colour of the lights according to what pin they are plugged in, and also declare if it is an input or and output for the computer to know. For example: the red led is plugged into pin number 10 on the Arduino board, so we define it as the 10 pin, as an OUTPUT. We declare INPUT for things like buttons, sensors,...; and OUTPUT for lights, lcd screen,...
+  
   The code itself works very easily, what digitalWrite LOW and HIGH is is to turn on and off the lights, delay is to wait for a specific amount of miliseconds before performing the next task. As we learned bash language, modern C ( arduino ) coding seems to be much easier as we already know the concept, how to do things, it is just the code that is written in a different way. This is the traffic light with the actual arduino set:
  
  ![TrafficLight](TrafficLight.gif)
@@ -276,10 +278,7 @@ void loop()
   
 }
 ````
-What I did here was at first I convert the binary into decimal so that it is easier to work with, and then from then use if as a condition to get specific outcomes. Similar to this exercise, we also did another 2 tables: one is similar to the first one, and one with 3 inputs instead of 2 inputs.
-
-Table 2:
-
+What I did here was at first I convert the binary into decimal so that it is easier to work with, and then from then use if as a condition to get specific outcomes.
 
 **Using binary gates:**
 ````.c
@@ -294,6 +293,14 @@ void loop()
 }
 ````
 As you can see, it is a lot shorter. It can actually be written in 2 lines of code only, but because I want to keep it organized, I assigned name for each value and equation so it is easier to understand. The symbols "!", "&","|"... are the logic gates, it represents NOT, AND, OR,... So basically, it works the same as all the if commands but put into a very simplified line, thats what makes binary gates so convenient when utilized.
+
+Similar to this exercise, we also did another 2 tables: one is similar to the first one, and one with 3 inputs instead of 2 inputs. For the ones that is with 3 inputs, it is a little more complicated as we have to now work with a larger varieties of situation. So the binary equation are usually a bit longer, but still works the exact same way.
+
+````.c
+  bool eqA = ( (!C) & (!A) ) | B | ( C & A );
+  bool eqB =  ( A & C ) | ( (!B) & (!C) );
+  bool eqC = ( (!C) & (!A) ) | ((!C) & B));
+````
 
 ### 6. Presenting numbers using LEDs
 We are currently working on how to show a number by pressing buttons. Like the number you see in calculators, timers,... are all programmed this way, and we will find out how it works.
@@ -364,22 +371,92 @@ It took us a lot of time to get all the wires connected, plugged in to the led l
 
 
 
-
-
 ### 7. Designing input system for 2 buttons
 
 **Step 1: Finding the way the system works that has the most efficiency**
 This for me seems to be the hardest step of the program: how to find the right system. Of course, we have only 2 buttons, but we can decide how the program works and what the buttons will choose. There are many different approaches to the system, and finding the most efficient one is not easy at all.
 
+After thinking of a lot of ideas, I have thought about my own, but that requires a lot of function for the user to remember, which does not meet one of our criteria. In the end, I decided to use a very simple approach to the problem: one buttong is for changing to the letter/number that you want, and the other button is to either  delete or send the message. The most difficult thing I encountered is that as we have to put the program inside of the void loop, the program runs every milisecond, which is very hard to read the input from the buttons and give output to the lcd. That is why we are going to use something called interrupts.
 
+***Interrupts:**
+An Interrupt's job is to make sure that the processor responds quickly to important events. When a certain signal is detected, an Interrupt (as the name suggests) interrupts whatever the processor is doing, and executes some code designed to react to whatever external stimulus is being fed to the Arduino. Once that code has wrapped up, the processor goes back to whatever it was originally doing as if nothing happened!
 
- 
+But because of that, we cannot have functions like if the user press 2 button at the same time, the program will perform a special task, this is because there can only be 1 interrupt runs at a time. 
 
- 
- 
+**Step 2: Coding**
 
+Working with interrupts are quite complicated at first for me because we have to use a lot of unfamiliar functions and variables, but we soon understood it better as we get to see example codes. We are given an uncompleted program for the input system and out task is to complete it. After completing the program and testing on tinkercad, it works perfectly and also I understood how interrupts works a lot better. 
+````.c
+String text = "";
+int index = 0; 
+// add all the letters and digits to the keyboard
 
-  
+String keyboard[38]={"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "SENT", "DEL"};
+int numOptions = 38; //size of keyboard 
+
+void setup()
+{
+  Serial.begin(9600);
+  attachInterrupt(0, changeLetter, RISING);//button A in port 2
+  attachInterrupt(1, selected, RISING);//button B in port 3
+}
+
+void loop()
+{
+  Serial.println("Option (Select:butB, Change:butA): " + keyboard[index]);
+  Serial.println("Message: "+ text);
+  delay(100);
+}
+
+//This function changes the letter in the keyboard
+void changeLetter(){
+  index++;
+    //Explain what the functionality of the if condition below 
+
+  if(index>numOptions){
+  	index=0; //loop back to first row
+  } 
+}
+
+void selected() {
+  String key=keyboard[index];
+	if ( key == "DEL" ) {
+	int len = text.length();
+	text.remove(len-1);
+	} else if ( key == "SEND") {
+	Serial.print('Message sent');
+	text = "";
+	} else {
+ 	text = text +  key;
+	}
+	index=0; 
+
+}
+````
+The only problem with the program is that we are displaying the output using the serial monitor, which the user will not be able to see. So the approach to this problem is to use an lcd display to display the choices and also output for the user. 
+
+**Step 3: Using lcd display**
+
+The lcd are quite complicated to be plugged into the board, as it consists of multiple wires connecting to different ports, so we have to connect it based on the example on TinkerCad
+
+![lcddisplay](lcddisplay.png)
+
+And this is what we accomplished to make using the actual Arduino set
+
+![buildingLCD](buildingLCD.jpg)
+
+**Step 4: Finishing the code**
+If we use the lcd display, we cannot use commands like Serial.print; Serial.begin anymore, and we have to use the special commands for the lcd display, but it is very similar:
+````.c
+lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(keyboard[index]);
+  lcd.setCursor(0, 1);
+  lcd.print(text);
+  delay(100);
+````
+After finishing the code and tested it, it finally works! We were able to create an input system for the program.
+
 
 Evaluation
 -----------
