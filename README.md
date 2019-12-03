@@ -1,5 +1,7 @@
 # ComSciUnit2
 
+![Logo](Logo.png)
+
 Martian Decoder
 ===================
 
