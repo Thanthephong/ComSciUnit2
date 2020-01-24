@@ -908,17 +908,30 @@ text=mess3;
   mess3="";
 ````
 ### 11. A look at the system
-English to Binary: https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20binary.mp4
-Binary to English: https://github.com/Thanthephong/ComSciUnit2/blob/master/Binary%20to%20English.mp4
-English to Morse: https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20morse.mp4
-Morse to English: https://github.com/Thanthephong/ComSciUnit2/blob/master/Morse%20to%20binary.mp4
+English to Binary: 
+https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20binary.mp4
 
+Binary to English:
+https://github.com/Thanthephong/ComSciUnit2/blob/master/Binary%20to%20English.mp4
 
+English to Morse: 
+https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20morse.mp4
 
-
-
-
+Morse to English: 
+https://github.com/Thanthephong/ComSciUnit2/blob/master/Morse%20to%20binary.mp4
 
 
 Evaluation
 -----------
+**Success criteria**
+![evaluation](evaluation.png)
+
+**Improvements**
+
+1. Although the system works fine, there can still small error that sometimes occur. This is because as it is such a big program, we split into different parts to do, and when trying to put it in together, there might be mistakes and bugs that we couldn't be aware of. Also, the code is very long and unorganized. Maybe next time, projects like this happens, we should spend more time on working and debugging the code, check that everything is working perfectly and also simplify the code as much as possible so it looks somewhat organized
+
+2. One of the problem we faced is the miscommunication between the two stations. Me and Filip had to work together with Mars station to come up with a morse lighting system that both groups can understand, and so at first we decided on doing a 1 light system. I was quite concerned at first because it is completely time based if we want to use only 1 light, but we still had to stick with that. After finishing and completing the program, the other groups turns out to be using 2 light bulbs so we didnt have the same system anymore. So next time for group projects, instead of only be aware of our own group work, we also have to know how other group is doing
+
+3. There are minority differences between tinker cad and the actual arduino plugged into a computer. Some part of the code does not work on tinkercad but works on the actual arduino. Also, when we had everything done and running on tinker cad, we plugged it into an arduino, and we realized that the timing of the delay is not quite the same anymore. So instead of thinking that everything will work perfectly fine, we should do some prototypes and run everything through beforehand before realizing the problem at the last moment and rushed to fix it
+
+
