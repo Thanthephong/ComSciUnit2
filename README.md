@@ -907,6 +907,13 @@ text=mess3;
   text="";
   mess3="";
 ````
+### 11. A look at the system
+English to Binary: https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20binary.mp4
+Binary to English: https://github.com/Thanthephong/ComSciUnit2/blob/master/Binary%20to%20English.mp4
+English to Morse: https://github.com/Thanthephong/ComSciUnit2/blob/master/English%20to%20morse.mp4
+Morse to English: https://github.com/Thanthephong/ComSciUnit2/blob/master/Morse%20to%20binary.mp4
+
+
 
 
 
