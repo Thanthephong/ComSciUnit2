@@ -67,6 +67,28 @@ Human-centered design [also Human-centred design, as used in ISO standards] is a
 [1] “Usability retrieved from https://www.techopedia.com/definition/4919/usability ( 25 Nov 2019 )
 [2] POSMER J, MARS R. “ It’s not you, bad doors are everywhere” 2016. Retrieved ( 25 Nov 2019 )
 
+**Flow diagrams**
+Input system:
+
+![Inputsystem](Inputsystem.jpg)
+
+Binary to English: 
+![BintoEng](BintoEng.png)
+
+
+English to Binary:
+
+![EngtoBin](EngtoBin.png)
+
+
+Morse to English:
+
+![MorsetoEng](MorsetoEng.png)
+
+
+English to Morse:
+
+![EngtoMorse](EngtoMorse.jpg)
 
 
 Development
@@ -441,8 +463,76 @@ lcd.clear();
   lcd.print(text);
   delay(100);
 ````
-After finishing the code and tested it, it finally works! We were able to create an input system for the program.
+After finishing the code and tested it, it finally works! We were able to create an input system for the program. But this is only the start or the program itself, we still have lots of things to add and fix in this system. After figuring out what needed to be added, we came up with a final system.
+````.c
+String keyboard[]={" ", "SENT BINARY","SENT MORSE", "MORSE TO BINARY", "BINARY TO MORSE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0","a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "DEL"};
+````
+This is the final keyboard that we have. Instead of only having sent and delete, we've included: 
+- Sent binary ( Input: English; Output: Binary ): This is for our moon team to send our own messages to the earth team
+- Sent mrose ( Input: English; Output: Morse): This is for our moon team to send our own messages to the mars team
+- Morse to binary ( Input: Morse; Output: Binary ): This to convert the message that mars wanted to send into binary so that the earth team can read it
+- Binary to morse ( Input: Binary; Output: Morse): This is to convert the message that earth wanted to send into morse so that the mars team can read it
+With the help of Dr Ruben, created a better, more efficient and accurate code for the input system:
+**Changing letters:**
+````.c
+void changeLetter(){
+  static unsigned long last_interrupt_time = 0;
+  unsigned long interrupt_time = millis();
+  if (interrupt_time - last_interrupt_time > 200)
+  {
+  
+    last_interrupt_time = interrupt_time;// If interrupts come faster than 200ms, assum
+    index++;
+      //check for the max row number
+    if(index==numOptions){
+      index=0; //loop back to first row
+    } 
+ }
+}
+````
+Every time the right button is clicked, index the program will read that interrupt, and hence increase the index. By increasing the index, the array switched to the next number, and then display it on the lcd. The if function is for when the user loop through the whole array, instead of keep increasig the index, we set the index to be zero ( the first element of the array) and therefor loops back to the first letter.
+````.c
+void selected(){
+  static unsigned long last_interrupt_time = 0;
+  unsigned long interrupt_time = millis();
+  if (interrupt_time - last_interrupt_time > 200)
+  {
+  
+    last_interrupt_time = interrupt_time;// If interrupts come faster than 200ms, assum
+    
+    String key = keyboard[index];
+    if (key == "DEL")
+    {
+      int len = text.length();
+      text.remove(len-1);
+    }
+    else if(key == "SENT BINARY")
+    {
+      EtoB();
+      turnOnOff();
+      sentbin();
+      turnOnOff();
+      text="";
+    } else if(key == "SENT MORSE"){
+    	sentmorse();
+    }
+    else if(key== "MORSE TO BINARY"){
+      MtoB();
+    }
+    
+    else{
+      text += key;
+    }
+    index = 0; //restart the index
+  }
+}
+````
+This function runs when the user press the left button, which is the select button. Basically, how this works is, when the user chooses a letter/ number, that letter will be added to a string called "text", and as the user keep choosing the letters, it will keep being added to that string. If the user chooses delete, the program will remove the last letter of the text, and therefore deleting that letter. When the user choose one of the commands like: "morse to binary",... The program will stop adding letter, and perform the function based on what is input into the text, that is why there are multiple if else commands, those are for different functions with different purposes. If the user didn't choose any of that, that means that what the user chosen has to be either a letter or number, and there for adding it to the text ( else { text+=key}). The index = 0 is for when the user select anything, the program will automatically loops back to the first element of the array.
 
+After finishing with the input system, we had to figure out the hardest part, which is actually working with transvering binary and morse code.
 
+### 8. Binary part of the system
+
+Lingye and Tuan worked on the binary part of the system, and my and Filip worked on the other part. 
 Evaluation
 -----------
