@@ -531,8 +531,387 @@ This function runs when the user press the left button, which is the select butt
 
 After finishing with the input system, we had to figure out the hardest part, which is actually working with transvering binary and morse code.
 
-### 8. Binary part of the system
+### 8. Planning
+Because we are the middle station, we have to be able to both read and send morse, binary and english. So we decided to create 4 functions inside the program: converint english to morse, morse to english, binary to morse, and binary to english. With these 4 functions, we can do everything that we needed to, sending our own messages to the other 2 stations, send the message from earth to mars and vice versa. As there are lots of functions, we decided to split the group into 2 parts : morse part and english part. One problem is, once we complete the program is done seperately, when putting it together, because of the overflow of code for the interrupts, the program did not run correctly. So we decided to cut out 1 part of the program and make a separate one: the binary to english program.
 
-Lingye and Tuan worked on the binary part of the system, and my and Filip worked on the other part. 
+
+### 9. Binary part of the system
+Lingye and Tuan worked on the binary part of the system, and my and Filip worked on the other part. This is their part of the program:
+**English to binary:**
+````.c
+void EtoB(){
+
+for(int i=0; i<text.length(); i++){
+
+   char myChar = text.charAt(i);
+ 
+    for(int i=7; i>=0; i--){
+      bna = bitRead(myChar,i);
+      chch += bna; 
+    }
+}
+}
+
+  
+void sentbin(){
+    for(int x=0; x < chch.length(); x++){
+      char myChar1 = chch.charAt(x);
+      if(myChar1 == '0'){
+        digitalWrite(led1, LOW);
+        blink();
+        delay(500);
+      } else if(myChar1 == '1'){
+        digitalWrite(led1, HIGH);
+        blink();
+        delay(500);
+      } else {
+        turnOff();
+      }
+    }
+  }
+
+void blink(){
+  digitalWrite(led2, HIGH);
+  delay(500);
+  digitalWrite(led2, LOW);
+  delay(500);
+}
+
+void turnOnOff(){
+ digitalWrite(led1, HIGH);
+ digitalWrite(led2, HIGH);
+ delay(500);
+ digitalWrite(led1, LOW);
+ digitalWrite(led2, LOW);
+ delay(500);
+}
+
+void turnOff(){
+ digitalWrite(led1, LOW);
+ digitalWrite(led2, LOW);
+ delay(500);
+}
+````
+The program begins when the user chose the option: "Sent binary"
+
+**Binary to English:
+````.c
+void bintoeng(){
+  for (int y = 0; y < text.length(); y++){
+    if(text.charAt(y) != ' '){
+      z++;
+      text2+=text.charAt(y);
+      if(z == 8){
+        check();
+      	text2="";
+        z=0;
+      }
+    } else {
+    	text2+= " ";
+    }
+  }
+ Serial.print(text1); 
+}
+
+void check(){
+    if (text2 == "01100001") {
+           text1=text1+"a";
+    } else if (text2 == "01100010") {
+           text1=text1+"b";
+    } else if (text2 == "01100011") {
+           text1=text1+"c";
+    } else if (text2 == "01100100") {
+           text1=text1+"d";
+    } else if (text2 == "01100101") {
+           text1=text1+"e";
+    } else if (text2 == "01100110") {
+           text1=text1+"f";
+    } else if (text2 == "01100111") {
+           text1=text1+"g";
+    } else if (text2 == "01101000") {
+           text1=text1+"h";
+    } else if (text2 == "01101001") {
+           text1=text1+"i";
+    } else if (text2 == "01101010") {
+           text1=text1+"j";
+    } else if (text2 == "01101011") {
+           text1=text1+"k";
+    } else if (text2 == "01101100") {
+           text1=text1+"l";
+    } else if (text2 == "01101101") {
+           text1=text1+"m";
+    } else if (text2 == "01101110") {
+           text1=text1+"n";
+    } else if (text2 == "01101111") {
+           text1=text1+"o";
+    } else if (text2 == "01110000") {
+           text1=text1+"p";
+    } else if (text2 == "01110001") {
+           text1=text1+"q";
+    } else if (text2 == "01110010") {
+           text1=text1+"r";
+    } else if (text2 == "01110011") {
+           text1=text1+"s";
+    } else if (text2 == "01110100") {
+           text1=text1+"t";
+    } else if (text2 == "01110101") {
+           text1=text1+"u";
+    } else if (text2 == "01110110") {
+           text1=text1+"v";
+    } else if (text2 == "01110111") {
+           text1=text1+"w";
+    } else if (text2 == "01111000") {
+           text1=text1+"x";
+    } else if (text2 == "01111001") {
+           text1=text1+"y";
+    } else if (text2 == "01111010") {
+           text1=text1+"z";
+    } 
+}
+````
+This program has to be seperated from the main program because it causes overload, but as a separate program, it works completely fine
+
+### 10. Morse part of the system
+Filip and I worked on the morse part of the system. The only tricky part for us is to come up with a lighting system that actually works because we are using 1 light and its totally time based so mistakes can easily be made. So first, we planned out the system together, and as morse code has 2 syntaxs: dash and dot, we assigned when different time for different syntaxes, and also pauses between letters and words.
+
+**English to Morse part ( Filip's ):**
+````.c
+for(i=0; i<text.length(); i++) {
+        switch(text[i]) {
+          case ' ':
+          mess+="0";
+          break;
+          case 'A': 
+           mess=mess+"12";
+          break;
+          case 'B':
+            mess=mess+"2111";
+          break;
+          case 'C':
+            mess=mess+"2121";
+          break;
+          case 'D':
+          mess+="211";
+          break;
+          case 'E':
+          mess+="1";
+          break;
+          case 'F':
+          mess+="1121";
+          break;
+          case 'G':
+          mess+="221";
+          break;
+          case 'H':
+          mess+="1111";
+          break;
+          case 'I':
+          mess+="11";
+          break;
+          case 'J':
+          mess+="1222";
+          break;
+          case 'K':
+          mess+="212";
+          break;
+          case 'L':
+          mess+="1211";
+          break;
+          
+          case 'M':
+          mess+="22";
+          break;
+          
+          case 'N':
+          mess+="21";
+          break;
+          
+          case 'O':
+          mess+="222";
+          break;
+          
+          case 'P':
+          mess+="1221";
+          break;
+          
+          case 'Q':
+          mess+="2212";
+          break;
+
+          case 'R':
+          mess+="121";
+          break;
+
+          case 'S':
+          mess+="111";
+          break;
+
+          case 'T':
+          mess+="2";
+          break;
+
+          case 'U':
+          mess+="112";
+          break;
+
+          case 'V':
+          mess+="1112";
+          break;
+
+          case 'W':
+          mess+="122";
+          break;
+
+          case 'X':
+          mess+="2112";
+          break;
+
+          case 'Y':
+          mess+="2122";
+          break;
+
+          case 'Z':
+          mess+="2211";
+          break;
+
+          case '1':
+          mess+="12222";
+          break;
+
+          case '2':
+          mess+="11222";
+          break;
+
+          case '3':
+          mess+="11122";
+          break;
+
+          case '4':
+          mess+="11112";
+          break;
+
+          case '5':
+          mess+="11111";
+          break;
+
+          case '6':
+          mess+="21111";
+          break;
+
+          case '7':
+          mess+="22111";
+          break;
+
+          case '8':
+          mess+="22211";
+          break;
+
+          case '9':
+          mess+="22221";
+          break;
+
+          case '0':
+          mess+="22222";
+          break;
+        }
+        mess+="3";
+      }
+      Serial.print(mess);
+       for(i=0; i<7; i++) {
+        blinkLight(300, 300);
+      }
+      for(i=0; i<mess.length(); i++) {
+        switch (mess[i]) {
+          case '0':
+          delay(3000);
+          break;
+          
+          case '1':
+          blinkLight(1000, 1000);
+          break;
+          
+          case '2':
+          blinkLight(3000, 1000);
+          break;
+          
+          case '3':
+          delay(1000);
+          break;
+        }
+      }
+      
+      for(i=0; i<7; i++) {
+        blinkLight(300, 300);
+      }
+      		
+          
+      text="";
+````
+Basically, how this works is that we will loop through the string and for every case of the letter ( a, b, c...) we add the value to the new string: dot is 1, dash is 2, between letters is 3, and between words is 0. After that we read that string and the light will turn on off depending on those numbers.
+
+***Morse to English ( My part ):***
+
+This is the part of the system that I complete by myself: converting from morse back to english. When doing this, I realized that if I do this, I will have to write down all the cases out all over again, which you can see doesn't look quite organize. So I came up with an idea: using 2 arrays for the program. I do understood that instead of using 2 arrays we can use the matrix but in order to keep it simple and easier to understand, I used 2 arrays instead.
+
+*Defining the needed variables and arrays:*
+````.c
+String keyboardformorse = " abcdefghijklmnopqrstuvwxyz1234567890";
+String morse[]={"0","12", "2111", "2121", "211", "1", "1121", "221", "1111", "11", "1222", "212", "1211", "22", "21", "222", "1221", "2212", "121", "111", "2", "112", "1112", "122", "2112", "2122", "2211", "12222", "11222", "11122", "11112", "11111", "21111", "22111", "22211", "22221", "22222"};
+String mess2 = "";
+String mess3= "";
+````
+I have also made the orders of the 2 arrays to be correct. For example: C to morse is dash dot dash dot, and so keyboardformorse[4]=c and morse[4]=2121 which is dash dot dash dot, works the same way for every other number and letter in the alphabet
+*The morse to english function:*
+````.c
+ void MtoB() {
+    for(i=0; i<text.length(); i++) {
+      if((text[i+1]=='3') || ((i+1)==text.length())||(text[i+1]=='0')){
+        mess2+=text[i];
+        for(j=0; j<37; j++) {
+          if(morse[j]==mess2) {
+            mess3+=keyboardformorse[j];
+            break;
+          }
+        }
+        mess2="";
+        if (text[i+1]=='0'){
+          mess3+=' ';
+        }
+          i+=1; 
+        
+        }
+      else {
+      	mess2+=text[i];
+      }
+      
+    } 
+````
+This is what the function looks like. Basically, dot is 1, dash is 2, theres a 3 between letters and a 0 between words. In order to read this, I have to find the 3 inside the text, if I find it, I will know that the words before it forms a letter. For example: if I input 123231, I will know that the three words are 12, 2, 1 which is a, t and e and therefore forms the word "ate". And the same case will happen with the "0", because at the end of each word , there will not be any "3", there will only be spaces ( which is 0 ) so we also have to include that inside the if function. So inside this functions, how it works is:
+
+- Loops through the text that the user entered
+- Keep adding each word to the mess2 string at a time per loop until the next letter is either a 3, a 0 or the current letter is the last letter of the string
+- When it satisfies the if function, the program will add the current word to the string mess2 and then start looping through the morse[] array. This array includes all the morse codes.
+- If the program finds the morse code that matches the mess2 string, then it will add the corresponding english letter ( using the keyboardformorse[] array) to another string called mess3
+- If the program reads a "0" then it will add a space to mess3 string because 0 means space between each word.
+- The loop will keep running like this throughout the whole text that the user entered 
+
+**The converted morse into English is what is inside the mess3 string, and the message will be printed out to the serial monitor. But not only that, because our main purpose is to help sending messages from mars station back to earth station.
+In order for that to happen, we have to again convert that mess3 message from english to binary for the earth station to read. In order to do that, I simply assigned the main text variable= mess3 and then run the English to Binary function from Tuan and Lingyes program, and the message will be converted and display in the lights turning on and off, and the earth can now see the message**
+````.c
+text=mess3;
+  Serial.print(text);
+  EtoB();
+  turnOnOff();
+  sentbin();
+  turnOnOff();
+  text="";
+  mess3="";
+````
+
+
+
+
+
+
 Evaluation
 -----------
