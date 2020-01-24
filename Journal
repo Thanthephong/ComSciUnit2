@@ -56,6 +56,17 @@ small breadboard instead of the very big one. In the end of the class, finally, 
 expected it to. We were very proud of ourselves to finish building this with a limited amount of time. But then for the other 
 groups, people to work on it, we have to unplug all of the cables and return it into the set, and that also took so much time.
 
-After finished with the lights, this class, we were trying to create 
+Onto working with the actual system itself, the martian decoder. This is quite complicated because we are HLs student, we were
+assigned to the group in the middle, which basically has to do everything: morse to eng, bin to eng, eng to morse, ... We really
+don't know how to start at first, but then we decided to split the group in half, one works mainly on the morse part, and one for 
+the binary part. Me and Filip is in the binary part, and first thing to do is to compromise with the mars group ( the group that works with
+morse ) to choose which system to use : either 1 light or 2 light, and also decided on the timing of the system. We wanted to use
+2 lights at first because we think it is not time based and so much easier to see, but the other group wants 1 light cause they
+think that it is simpler, so we went with using 1 light. After that, the first thing we did was to plan how to convert from english
+to morse. We realized that there are no rules for morse code, unlike binary, morse code are just cases. We start brainstorming ideas
+but we didn't have enough time, as that was the last day of the semester.
+
+
+
 
 
